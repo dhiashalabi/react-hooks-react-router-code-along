@@ -1,5 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import NavBar from "./components/NavLink";
+import About from "./components/About";
+import Login from "./components/Login";
 
 function Home() {
   return (
@@ -10,7 +15,22 @@ function Home() {
 }
 
 function App() {
-  return <Home />;
+  return (
+    <BrowserRouter>
+      <NavBar />
+      <Switch>
+        <Route exact path="/about">
+          <About />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
